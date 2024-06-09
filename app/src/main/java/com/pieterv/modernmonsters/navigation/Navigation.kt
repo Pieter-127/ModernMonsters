@@ -6,7 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
-import com.pieterv.list.ListScreenRoute
+import com.pieterv.list.ListScreen
 import com.pieterv.list.navigation.ListScreenRoute
 
 @Composable
@@ -15,7 +15,7 @@ fun Navigation() {
 
     NavHost(navController = navController, startDestination = ListScreenRoute) {
         composable<ListScreenRoute> {
-            ListScreenRoute(onPokemonTap = { pokemonId ->
+            ListScreen(onPokemonTap = { pokemonId ->
                 navController.navigate(
                     PokemonDetailScreen(
                         pokemonId = pokemonId

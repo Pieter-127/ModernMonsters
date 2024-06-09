@@ -1,4 +1,4 @@
-package com.pieterv.modernmonsters.ui.theme
+package com.pieterv.design.theme
 
 import androidx.compose.ui.graphics.Color
 

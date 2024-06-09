@@ -31,12 +31,12 @@ class ProjectVersionPlugin : Plugin<Project> {
                 targetCompatibility = JavaVersion.VERSION_17
             }
 
-                composeOptions {
+            composeOptions {
                 kotlinCompilerExtensionVersion = appKotlinCompilerExtensionVersion
             }
         }
         project.tasks.withType(KotlinCompile::class.java).configureEach {
-             kotlinOptions {
+            kotlinOptions {
                 jvmTarget = appJvmTarget
             }
         }

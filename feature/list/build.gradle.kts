@@ -5,6 +5,7 @@ plugins {
     id("com.pieterv.kapt")
     id("com.pieterv.serialization")
     id("com.pieterv.design")
+    id("com.pieterv.compose")
 }
 
 android {
