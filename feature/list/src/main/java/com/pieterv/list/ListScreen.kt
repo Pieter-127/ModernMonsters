@@ -19,6 +19,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 @Composable
 internal fun ListScreenContent() {
     Column {
-        Text("Hello from pokemon list on sunday")
+        Text("design system work in progress")
     }
 }

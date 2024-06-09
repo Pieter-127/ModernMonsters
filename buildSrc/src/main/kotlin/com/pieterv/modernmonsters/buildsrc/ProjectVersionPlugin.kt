@@ -1,10 +1,10 @@
 package com.pieterv.modernmonsters.buildsrc
 
-import com.android.build.gradle.LibraryExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import com.pieterv.modernmonsters.buildsrc.functions.*
 
 class ProjectVersionPlugin : Plugin<Project> {
 
@@ -40,9 +40,5 @@ class ProjectVersionPlugin : Plugin<Project> {
                 jvmTarget = appJvmTarget
             }
         }
-    }
-
-    private fun Project.android(): LibraryExtension {
-        return extensions.getByType(LibraryExtension::class.java)
     }
 }
