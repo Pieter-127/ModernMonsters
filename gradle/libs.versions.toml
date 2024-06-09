@@ -5,6 +5,7 @@ coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
+kotlinSerialization = "1.9.24"
 lifecycleRuntimeKtx = "2.8.1"
 activityCompose = "1.9.0"
 composeBom = "2024.05.00"
@@ -12,6 +13,9 @@ hilt = "2.45"
 kapt = "2.0.0"
 appcompat = "1.7.0"
 material = "1.12.0"
+hiltNavigation = "1.1.0"
+serialization = "1.6.3"
+composeNavigation = "2.8.0-beta02"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -35,6 +39,11 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 kotlinGradle = {group = "org.jetbrains.kotlin", name="kotlin-gradle-plugin", version.ref = "kotlin"}
 gradle = {group = "com.android.tools.build", name="gradle", version.ref = "agp"}
+hiltNavigation = {group = "androidx.hilt", name="hilt-navigation", version.ref = "hiltNavigation"}
+hiltNavigationCompose = {group = "androidx.hilt", name="hilt-navigation-compose", version.ref = "hiltNavigation"}
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization"}
+kotlin-serialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlinSerialization" }
+navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "composeNavigation" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -42,5 +51,6 @@ jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = 
 hilt = {id = "com.google.dagger.hilt.android", version.ref = "hilt"}
 kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kapt"}
 android-library = { id = "com.android.library", version.ref = "agp" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 
 
