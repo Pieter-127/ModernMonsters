@@ -4,13 +4,10 @@ plugins {
     id("com.pieterv.projectversion")
     id("com.pieterv.kapt")
     id("com.pieterv.hilt")
-    id("com.pieterv.serialization")
-    id("com.pieterv.design")
-    id("com.pieterv.compose")
 }
 
 android {
-    namespace = "com.pieterv.list"
+    namespace = "com.pieterv.network"
 
     defaultConfig {
         consumerProguardFiles("consumer-rules.pro")
@@ -28,13 +25,13 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:design"))
+    implementation(project(":core:database"))
+    implementation(libs.retrofit)
+    implementation(libs.converter.moshi)
+    implementation(libs.logging.interceptor)
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.appcompat)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-
 }

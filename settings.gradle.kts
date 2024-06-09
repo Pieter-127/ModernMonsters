@@ -18,3 +18,5 @@ rootProject.name = "ModernMonsters"
 include(":app")
 include(":feature:list")
 include(":core:design")
+include(":core:network")
+include(":core:database")

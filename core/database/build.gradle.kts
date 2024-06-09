@@ -4,13 +4,10 @@ plugins {
     id("com.pieterv.projectversion")
     id("com.pieterv.kapt")
     id("com.pieterv.hilt")
-    id("com.pieterv.serialization")
-    id("com.pieterv.design")
-    id("com.pieterv.compose")
 }
 
 android {
-    namespace = "com.pieterv.list"
+    namespace = "com.pieterv.database"
 
     defaultConfig {
         consumerProguardFiles("consumer-rules.pro")
@@ -28,13 +25,13 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:design"))
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.room.paging)
+    kapt(libs.androidx.room.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-
 }

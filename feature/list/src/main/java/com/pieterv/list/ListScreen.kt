@@ -23,7 +23,7 @@ fun ListScreen(
 @Composable
 internal fun ListScreenContent() {
     Column {
-        Text("design system")
+        Text("network and retrofit working")
     }
 }
 
