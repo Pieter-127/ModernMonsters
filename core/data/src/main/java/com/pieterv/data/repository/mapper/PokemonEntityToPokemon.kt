@@ -1,7 +1,7 @@
 package com.pieterv.data.repository.mapper
 
-import com.pieterv.data.repository.model.PokemonListEntry
 import com.pieterv.database.model.PokedexListEntryEntity
+import com.pieterv.models.PokemonListEntry
 
 fun List<PokedexListEntryEntity>.toPokedexEntry(): List<PokemonListEntry> {
     val mappedData = this.map {

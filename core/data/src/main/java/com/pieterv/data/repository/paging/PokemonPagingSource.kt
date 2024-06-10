@@ -3,9 +3,9 @@ package com.pieterv.data.repository.paging
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.pieterv.data.repository.mapper.toPokedexEntry
-import com.pieterv.data.repository.model.PokemonListEntry
 import com.pieterv.database.model.PokedexListEntryEntity
 import com.pieterv.database.pokemon.PokemonListDao
+import com.pieterv.models.PokemonListEntry
 import com.pieterv.network.retrofit.PokemonApi
 import javax.inject.Inject
 
@@ -41,8 +41,7 @@ class PokemonPagingSource @Inject constructor(
         return pokemonInDb.ifEmpty {
             val pokedexEntries = pokedexListEntries(pageSize, offset)
             pokemonListDao.insertAll(pokedexEntries)
-
-            emptyList()
+            pokedexEntries
         }
 
     }

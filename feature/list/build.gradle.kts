@@ -31,6 +31,7 @@ dependencies {
     implementation(project(":core:design"))
     implementation(project(":core:domain"))
     implementation(project(":core:common"))
+    implementation(project(":core:models"))
     implementation(libs.lottie.compose)
     implementation(libs.coil.compose)
     implementation(libs.androidx.room.paging)

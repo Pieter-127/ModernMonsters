@@ -1,7 +1,9 @@
 package com.pieterv.modernmonsters.navigation
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -15,13 +17,15 @@ fun Navigation() {
 
     NavHost(navController = navController, startDestination = ListScreenRoute) {
         composable<ListScreenRoute> {
-            ListScreen(onPokemonTap = { pokemonId ->
-                navController.navigate(
-                    PokemonDetailScreen(
-                        pokemonId = pokemonId
+            ListScreen(
+                modifier = Modifier.fillMaxSize(),
+                onPokemonTap = { pokemonId ->
+                    navController.navigate(
+                        PokemonDetailScreen(
+                            pokemonId = pokemonId
+                        )
                     )
-                )
-            })
+                })
         }
 
         composable<PokemonDetailScreen> {

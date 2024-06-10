@@ -5,8 +5,8 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.pieterv.common.Resource
 import com.pieterv.data.repository.PokemonRepository
-import com.pieterv.data.repository.model.PokemonListEntry
 import com.pieterv.data.repository.paging.PokemonPagingSource
+import com.pieterv.models.PokemonListEntry
 import com.pieterv.network.model.PokemonDto
 import com.pieterv.network.retrofit.PokemonApi
 import kotlinx.coroutines.flow.Flow

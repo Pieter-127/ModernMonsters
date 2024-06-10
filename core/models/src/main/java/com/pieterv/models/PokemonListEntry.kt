@@ -1,4 +1,4 @@
-package com.pieterv.data.repository.model
+package com.pieterv.models
 
 data class PokemonListEntry(
     val pokemonName: String,

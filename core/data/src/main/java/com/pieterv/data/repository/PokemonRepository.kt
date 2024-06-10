@@ -2,7 +2,7 @@ package com.pieterv.data.repository
 
 import androidx.paging.PagingData
 import com.pieterv.common.Resource
-import com.pieterv.data.repository.model.PokemonListEntry
+import com.pieterv.models.PokemonListEntry
 import com.pieterv.network.model.PokemonDto
 import kotlinx.coroutines.flow.Flow
 

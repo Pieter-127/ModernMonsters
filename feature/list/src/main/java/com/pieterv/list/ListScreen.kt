@@ -28,6 +28,7 @@ import androidx.paging.compose.itemKey
 import com.pieterv.design.theme.ModernMonstersTheme
 import kotlinx.coroutines.flow.flowOf
 import com.pieterv.list.components.*
+import com.pieterv.models.PokemonListEntry
 
 @Composable
 fun ListScreen(
@@ -36,91 +37,86 @@ fun ListScreen(
     viewModel: ListScreenViewModel = hiltViewModel(),
 ) {
     ModernMonstersTheme {
-        Text("yippeeeeeeeeeeeeeeee ")
-        LaunchedEffect(key1 = Unit) {
-            viewModel.testLoad()
-
+        ListScreenContent(
+            modifier,
+            viewModel.state.collectAsStateWithLifecycle().value,
+            viewModel.pokedexEntries.collectAsLazyPagingItems()
+        ) {
+            viewModel.onEvent(it)
         }
-//        ListScreenContent(
-//            modifier,
-//            viewModel.state.collectAsStateWithLifecycle().value,
-//            viewModel.pokedexEntries.collectAsLazyPagingItems()
-//        ) {
-//            viewModel.onEvent(it)
-//        }
-//
-//        LaunchedEffect(key1 = Unit) {
-//            viewModel.onEvent(MainScreenEvent.LoadPokemon)
-//        }
+
+        LaunchedEffect(key1 = Unit) {
+            viewModel.onEvent(MainScreenEvent.LoadPokemon)
+        }
     }
 }
 
-//@Preview
-//@Composable
-//fun PokemonListPreview() {
-//    ListScreenContent(Modifier.fillMaxSize(), MainScreenState()) {}
-//}
+@Preview
+@Composable
+fun PokemonListPreview() {
+    ListScreenContent(Modifier.fillMaxSize(), MainScreenState()) {}
+}
 
-//@OptIn(ExperimentalMaterial3Api::class)
-//@Composable
-//fun ListScreenContent(
-//    modifier: Modifier = Modifier,
-//    state: MainScreenState,
-//    entries: LazyPagingItems<PokedexListEntry> = flowOf(PagingData.empty<PokedexListEntry>()).collectAsLazyPagingItems(),
-//    onScreenEvent: (MainScreenEvent) -> Unit
-//) {
-//    Surface(
-//        color = MaterialTheme.colorScheme.background,
-//        modifier = modifier
-//    ) {
-//        Scaffold(
-//            topBar = {
-//                TopAppBar(
-//                    title = {
-//                        Text(
-//                            text = stringResource(id = R.string.appBarTitle),
-//                            color = MaterialTheme.colorScheme.onPrimary
-//                        )
-//                    },
-//                    colors = TopAppBarDefaults.mediumTopAppBarColors(
-//                        containerColor = MaterialTheme.colorScheme.primary
-//                    )
-//                )
-//            }) { innerPadding ->
-//            Column(
-//                modifier = Modifier.padding(innerPadding)
-//            ) {
-//                Spacer(modifier = Modifier.weight(1f))
-//                Column(
-//                    modifier = Modifier
-//                        .fillMaxWidth()
-//                ) {
-//                    if (state.failedLoading) {
-//                        //todo add failed loading state
-//                    } else {
-//                        PokemonList(pokedexEntries = entries, event = onScreenEvent)
-//                    }
-//                }
-//            }
-//        }
-//    }
-//}
-//
-//@Composable
-//private fun PokemonList(
-//    modifier: Modifier = Modifier,
-//    pokedexEntries: LazyPagingItems<PokedexListEntry>,
-//    event: (MainScreenEvent) -> Unit
-//) {
-//    LazyVerticalGrid(modifier = modifier, columns = GridCells.Fixed(2)) {
-//        items(
-//            count = pokedexEntries.itemCount,
-//            key = pokedexEntries.itemKey { it.number },
-//        ) { index ->
-//            val item = pokedexEntries[index]
-//            if (item != null) {
-//                PokedexEntry(entry = item, event = event)
-//            }
-//        }
-//    }
-//}
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ListScreenContent(
+    modifier: Modifier = Modifier,
+    state: MainScreenState,
+    entries: LazyPagingItems<PokemonListEntry> = flowOf(PagingData.empty<PokemonListEntry>()).collectAsLazyPagingItems(),
+    onScreenEvent: (MainScreenEvent) -> Unit
+) {
+    Surface(
+        color = MaterialTheme.colorScheme.background,
+        modifier = modifier
+    ) {
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = {
+                        Text(
+                            text = stringResource(id = R.string.appBarTitle),
+                            color = MaterialTheme.colorScheme.onPrimary
+                        )
+                    },
+                    colors = TopAppBarDefaults.mediumTopAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.primary
+                    )
+                )
+            }) { innerPadding ->
+            Column(
+                modifier = Modifier.padding(innerPadding)
+            ) {
+                Spacer(modifier = Modifier.weight(1f))
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                ) {
+                    if (state.failedLoading) {
+                        //todo add failed loading state
+                    } else {
+                        PokemonList(pokedexEntries = entries, event = onScreenEvent)
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun PokemonList(
+    modifier: Modifier = Modifier,
+    pokedexEntries: LazyPagingItems<PokemonListEntry>,
+    event: (MainScreenEvent) -> Unit
+) {
+    LazyVerticalGrid(modifier = modifier, columns = GridCells.Fixed(2)) {
+        items(
+            count = pokedexEntries.itemCount,
+            key = pokedexEntries.itemKey { it.number },
+        ) { index ->
+            val item = pokedexEntries[index]
+            if (item != null) {
+                PokedexEntry(entry = item, event = event)
+            }
+        }
+    }
+}
