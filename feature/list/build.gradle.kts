@@ -29,8 +29,14 @@ android {
 
 dependencies {
     implementation(project(":core:design"))
+    implementation(project(":core:domain"))
+    implementation(project(":core:common"))
+    implementation(libs.lottie.compose)
+    implementation(libs.coil.compose)
+    implementation(libs.androidx.room.paging)
+    implementation(libs.androidx.paging.runtime.ktx)
+    implementation(libs.androidx.paging.compose)
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

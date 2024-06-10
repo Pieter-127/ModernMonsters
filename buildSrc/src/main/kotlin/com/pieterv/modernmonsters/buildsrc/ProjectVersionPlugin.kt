@@ -11,7 +11,6 @@ class ProjectVersionPlugin : Plugin<Project> {
     private val appMinSdk = 24
     private val appCompileSdk = 33
     private val appJvmTarget = "17"
-    private val appKotlinCompilerExtensionVersion = "1.5.14"
 
     override fun apply(target: Project) {
         setProjectConfig(target)
@@ -31,9 +30,6 @@ class ProjectVersionPlugin : Plugin<Project> {
                 targetCompatibility = JavaVersion.VERSION_17
             }
 
-            composeOptions {
-                kotlinCompilerExtensionVersion = appKotlinCompilerExtensionVersion
-            }
         }
         project.tasks.withType(KotlinCompile::class.java).configureEach {
             kotlinOptions {

@@ -7,6 +7,8 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 
 class ComposePlugin : Plugin<Project> {
+
+    private val appKotlinCompilerExtensionVersion = "1.5.14"
     override fun apply(target: Project) {
 
         target.android().apply {
@@ -14,7 +16,7 @@ class ComposePlugin : Plugin<Project> {
                 compose = true
             }
             composeOptions {
-                kotlinCompilerExtensionVersion = "1.5.14"
+                kotlinCompilerExtensionVersion = appKotlinCompilerExtensionVersion
             }
         }
 

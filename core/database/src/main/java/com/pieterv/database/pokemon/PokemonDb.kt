@@ -2,10 +2,10 @@ package com.pieterv.database.pokemon
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.pieterv.database.model.PokedexListEntry
+import com.pieterv.database.model.PokedexListEntryEntity
 
 @Database(
-    entities = [PokedexListEntry::class],
+    entities = [PokedexListEntryEntity::class],
     version = 1,
     exportSchema = false
 )

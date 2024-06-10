@@ -8,7 +8,6 @@ plugins {
 
 android {
     namespace = "com.pieterv.network"
-
     defaultConfig {
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -25,7 +24,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:database"))
     implementation(libs.retrofit)
     implementation(libs.converter.moshi)
     implementation(libs.logging.interceptor)
