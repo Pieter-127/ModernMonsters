@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.pieterv.mylibrary"
+    namespace = "com.pieterv.models"
     compileSdk = 34
 
     defaultConfig {

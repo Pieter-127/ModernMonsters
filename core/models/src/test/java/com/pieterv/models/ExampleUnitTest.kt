@@ -1,4 +1,4 @@
-package com.pieterv.mylibrary
+package com.pieterv.models
 
 import org.junit.Test
 
