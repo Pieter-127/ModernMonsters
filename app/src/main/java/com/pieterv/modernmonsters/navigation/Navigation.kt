@@ -1,13 +1,11 @@
 package com.pieterv.modernmonsters.navigation
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.toRoute
 import com.pieterv.list.ListScreen
 import com.pieterv.list.navigation.ListScreenRoute
 
@@ -26,13 +24,6 @@ fun Navigation() {
                         )
                     )
                 })
-        }
-
-        composable<PokemonDetailScreen> {
-            val args = it.toRoute<PokemonDetailScreen>()
-            Column {
-
-            }
         }
     }
 }

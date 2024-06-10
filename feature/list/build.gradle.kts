@@ -5,7 +5,6 @@ plugins {
     id("com.pieterv.kapt")
     id("com.pieterv.hilt")
     id("com.pieterv.serialization")
-    id("com.pieterv.design")
     id("com.pieterv.compose")
 }
 
@@ -32,6 +31,7 @@ dependencies {
     implementation(project(":core:domain"))
     implementation(project(":core:common"))
     implementation(project(":core:models"))
+
     implementation(libs.lottie.compose)
     implementation(libs.coil.compose)
     implementation(libs.androidx.room.paging)
