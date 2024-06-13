@@ -14,27 +14,7 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 import com.pieterv.list.R
 import com.pieterv.models.PokemonListEntry
 
-@Composable
-internal fun ImageLoadingComposable(
-    modifier: Modifier,
-    entry: PokemonListEntry
-) {
-    SubcomposeAsyncImage(
-        model = ImageRequest.Builder(LocalContext.current)
-            .data(entry.imageUrl)
-            .diskCachePolicy(
-                CachePolicy.ENABLED
-            )
-            .crossfade(true)
-            .build(),
-        loading = {
-            LoaderAnimation()
-        },
-        contentDescription = entry.pokemonName,
-        contentScale = ContentScale.Crop,
-        modifier = modifier
-    )
-}
+
 
 @Composable
 internal fun LoaderAnimation() {
