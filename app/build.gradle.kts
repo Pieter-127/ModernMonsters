@@ -55,8 +55,13 @@ android {
 dependencies {
     implementation(project(":core:design"))
     implementation(project(":feature:list"))
+    implementation(project(":feature:detail"))
     implementation(project(":core:domain"))
     implementation(project(":core:network"))
+    implementation(project(":core:models"))
+
+    implementation ("androidx.compose.material3:material3-adaptive-navigation-suite:1.0.0-alpha07")
+    implementation ("androidx.compose.material3.adaptive:adaptive-navigation:1.0.0-beta02")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

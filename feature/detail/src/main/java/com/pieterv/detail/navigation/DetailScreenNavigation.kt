@@ -1,4 +1,7 @@
 package com.pieterv.detail.navigation
 
-object DetailScreenNavigation {
-}
+@kotlinx.serialization.Serializable
+data class DetailScreenRoute(
+    val pokemonName: String,
+    val imageUrl: String,
+)

@@ -17,15 +17,12 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
-import com.pieterv.design.theme.ModernMonstersTheme
 import kotlinx.coroutines.flow.flowOf
 import com.pieterv.list.components.*
 import com.pieterv.models.PokemonListEntry
-import com.pieterv.models.PokemonName
-
 
 @Composable
-fun ListScreen(
+fun PokemonListScreen(
     onPokemonTap: (PokemonListEntry) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: ListScreenViewModel = hiltViewModel(),
@@ -33,6 +30,7 @@ fun ListScreen(
     LaunchedEffect(key1 = Unit) {
         viewModel.loadPokemon()
     }
+
     ListScreenContent(
         modifier = modifier,
         state = viewModel.state.collectAsStateWithLifecycle().value,
@@ -44,7 +42,10 @@ fun ListScreen(
 @Preview
 @Composable
 private fun PokemonListPreview() {
-    ListScreenContent(Modifier.fillMaxSize(), MainScreenState()) {}
+    ListScreenContent(
+        modifier = Modifier.fillMaxSize(),
+        state = MainScreenState()
+    ) {}
 }
 
 @Composable
@@ -52,7 +53,7 @@ private fun ListScreenContent(
     modifier: Modifier = Modifier,
     state: MainScreenState,
     entries: LazyPagingItems<PokemonListEntry> = flowOf(PagingData.empty<PokemonListEntry>()).collectAsLazyPagingItems(),
-    onPokemonTap: (PokemonListEntry) -> Unit
+    onPokemonTap: (PokemonListEntry) -> Unit,
 ) {
     Surface(
         color = MaterialTheme.colorScheme.background,
@@ -64,7 +65,9 @@ private fun ListScreenContent(
             if (state.failedLoading) {
                 //todo add failed loading state
             } else {
-                PokemonList(pokedexEntries = entries, onPokemonTap = onPokemonTap)
+                PokemonList(
+                    pokedexEntries = entries, onPokemonTap = onPokemonTap
+                )
             }
         }
     }

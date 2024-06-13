@@ -3,14 +3,14 @@ package com.pieterv.network.model
 import com.squareup.moshi.Json
 
 data class PokemonDto(
+    val id: Int,
+    val name: String,
     @field:Json(name = "game_indices")
     val games: List<Game>,
-    val id: Int,
     @field:Json(name = "location_area_encounters")
     val locationAreaEncounters: String,
-    val name: String,
-    val order: Int,
     val sprites: Sprites,
+    val types: Sprites,
 )
 
 data class Game(

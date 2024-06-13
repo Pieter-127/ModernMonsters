@@ -13,7 +13,7 @@ import com.pieterv.list.PokemonListScreen
 import com.pieterv.list.navigation.ListScreenRoute
 
 @Composable
-fun Navigation() {
+fun PokemonListNavigation() {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = ListScreenRoute) {
@@ -33,8 +33,7 @@ fun Navigation() {
             val args = it.toRoute<DetailScreenRoute>()
             PokemonDetailScreen(
                 modifier = Modifier.fillMaxSize(),
-                pokemonName = args.pokemonName,
-                pokemonImageUrl = args.imageUrl,
+                args = args,
                 navController = navController
             )
         }

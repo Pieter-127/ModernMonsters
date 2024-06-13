@@ -1,16 +1,17 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("com.pieterv.projectversion")
+    id("com.pieterv.kapt")
+    id("com.pieterv.hilt")
+    id("com.pieterv.serialization")
+    id("com.pieterv.compose")
 }
 
 android {
     namespace = "com.pieterv.detail"
-    compileSdk = 34
 
     defaultConfig {
-        minSdk = 24
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -23,20 +24,15 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
 }
 
 dependencies {
+    implementation(project(":core:design"))
+    implementation(project(":core:domain"))
+    implementation(project(":core:common"))
+    implementation(project(":core:models"))
+    implementation(project(":core:components"))
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

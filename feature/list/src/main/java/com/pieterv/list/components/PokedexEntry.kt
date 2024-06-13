@@ -21,14 +21,14 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.pieterv.list.MainScreenEvent
+import com.pieterv.components.ImageLoadingComposable
 import com.pieterv.models.PokemonListEntry
 
 @Composable
 internal fun PokedexEntry(
     entry: PokemonListEntry,
     modifier: Modifier = Modifier,
-    event: (MainScreenEvent) -> Unit
+    onPokemonTap: (PokemonListEntry) -> Unit
 ) {
     Box(
         contentAlignment = Alignment.Center,
@@ -39,14 +39,19 @@ internal fun PokedexEntry(
             .aspectRatio(1f)
             .background(MaterialTheme.colorScheme.surface)
             .clickable {
-                event.invoke(MainScreenEvent.PokedexTap(entry))
+                onPokemonTap.invoke(entry)
             }
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             ImageLoadingComposable(
                 modifier = Modifier
                     .size(120.dp)
-                    .align(Alignment.CenterHorizontally), entry = entry
+                    .align(Alignment.CenterHorizontally),
+                imageUrl = entry.imageUrl,
+                contentDescription = entry.pokemonName,
+                loadingAnimation = {
+                    LottieAnimation()
+                }
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(

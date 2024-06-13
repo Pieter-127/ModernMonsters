@@ -28,28 +28,20 @@ class ListScreenViewModel @Inject constructor(
         MutableStateFlow(value = PagingData.empty())
         private set
 
-    fun onEvent(event: MainScreenEvent) {
-        when (event) {
-            is MainScreenEvent.LoadPokemon -> {
-                viewModelScope.launch(Dispatchers.IO) {
-                    val response = loadPokemonListUseCase(20)
-                    if (response is Resource.Success) {
-                        _state.update {
-                            it.copy(failedLoading = false, isLoading = false)
-                        }
-                        response.data?.cachedIn(viewModelScope)?.collectLatest { latest ->
-                            pokedexEntries.value = latest
-                        }
-                    } else {
-                        _state.update {
-                            it.copy(failedLoading = true, isLoading = false)
-                        }
-                    }
+    fun loadPokemon() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val response = loadPokemonListUseCase(20)
+            if (response is Resource.Success) {
+                _state.update {
+                    it.copy(failedLoading = false, isLoading = false)
                 }
-            }
-
-            is MainScreenEvent.PokedexTap -> {
-
+                response.data?.cachedIn(viewModelScope)?.collectLatest { latest ->
+                    pokedexEntries.value = latest
+                }
+            } else {
+                _state.update {
+                    it.copy(failedLoading = true, isLoading = false)
+                }
             }
         }
     }

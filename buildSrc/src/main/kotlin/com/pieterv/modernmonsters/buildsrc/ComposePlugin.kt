@@ -33,5 +33,7 @@ class ComposePlugin : Plugin<Project> {
         target.dependencies.debugImplementation(target.libs.androidx.ui.tooling)
         target.dependencies.debugImplementation(target.libs.androidx.ui.test.manifest)
 
+        //"features"
+        target.dependencies.implementation(target.libs.coil.compose)
     }
 }
