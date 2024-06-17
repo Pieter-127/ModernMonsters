@@ -27,7 +27,7 @@ fun ImageLoadingComposable(
             loadingAnimation()
         },
         contentDescription = contentDescription,
-        contentScale = ContentScale.Crop,
+        contentScale = ContentScale.FillHeight,
         modifier = modifier
     )
 }

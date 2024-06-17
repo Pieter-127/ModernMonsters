@@ -23,6 +23,12 @@ class PokemonDetailScreenViewModel @Inject constructor(
     var state = _state.asStateFlow()
 
     fun loadPokemon(pokemonName: PokemonName) {
+        _state.update {currentState ->
+            currentState.copy(
+                failedLoading = false,
+                isLoading = true,
+            )
+        }
         viewModelScope.launch(Dispatchers.IO) {
             val response = getPokemonDetailsUseCase(pokemonName)
             if (response is Resource.Success) {

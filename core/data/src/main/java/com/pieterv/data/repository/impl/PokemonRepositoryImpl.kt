@@ -1,5 +1,7 @@
 package com.pieterv.data.repository.impl
 
+import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.text.toLowerCase
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -30,11 +32,12 @@ class PokemonRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getPokemonInfo(pokemonName: String): Resource<PokemonDetail> {
-        val response = try {
-            api.getPokemonInfo(pokemonName)
+        return try {
+            Resource.Success(
+                api.getPokemonInfo(pokemonName.toLowerCase(Locale.current)).toPokemonDetail()
+            )
         } catch (e: Exception) {
             return Resource.Error(e)
         }
-        return Resource.Success(response.toPokemonDetail())
     }
 }
