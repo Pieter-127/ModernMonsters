@@ -38,10 +38,6 @@ fun ModernMonstersUI() {
             AppDestinations.HOME -> {
                 PokemonListNavigation()
             }
-
-            AppDestinations.SEARCH -> {
-
-            }
         }
     }
 }

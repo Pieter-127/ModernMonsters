@@ -45,7 +45,7 @@ data class Sprites(
     @field:Json(name = "back_shiny")
     val backShiny: String?,
     @field:Json(name = "front_shiny_female")
-    val frontShinyFemale: Any,
+    val frontShinyFemale: String?,
     @field:Json(name = "back_shiny_female")
     val backShinyFemale: String?,
 )

@@ -1,4 +1,5 @@
 [versions]
+adaptiveNavigation = "1.0.0-beta02"
 agp = "8.4.1"
 coilCompose = "2.5.0"
 converterMoshi = "2.9.0"
@@ -76,5 +77,3 @@ hilt = {id = "com.google.dagger.hilt.android", version.ref = "hilt"}
 kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kapt"}
 android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-
-
