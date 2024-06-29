@@ -7,11 +7,16 @@ jobs:
   build-and-test:
     docker:
       - image: circleci/android:api-30
-        environment:
-          JVM_OPTS: -Xmx3200m
-          JAVA_HOME: "/opt/java/openjdk"
+    environment:
+      JVM_OPTS: -Xmx3200m
     steps:
       - checkout
+      - run:
+          name: Install Java 17
+          command: |
+            sudo apt-get update && sudo apt-get install -y openjdk-17-jdk
+            sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+            java -version
       - run:
           name: Set execute permission for gradlew
           command: chmod +x ./gradlew
