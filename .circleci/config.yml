@@ -1,8 +1,11 @@
 version: 2.1
+
 jobs:
   test-java:
     docker:
-      - image: cimg/openjdk:17.0
+      - image: cimg/openjdk:17.0  
+    environment:
+      JVM_OPTS: -Xmx3200m  
     steps:
       - checkout
       - run:
@@ -13,13 +16,16 @@ jobs:
       - restore_cache:
           key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
       - run:
+          name: Set execute permission for gradlew
+          command: chmod +x ./gradlew  
+      - run:
           name: Set JAVA_HOME and Gradle properties
           command: |
             export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
             echo "org.gradle.java.home=/usr/lib/jvm/java-17-openjdk-amd64" >> gradle.properties
       - run:
-          name: Build with Gradle
-          command: ./gradlew build
+          name: Run Gradle check
+          command: ./gradlew check
       - store_test_results:
           path: build/test-results
       - save_cache:
