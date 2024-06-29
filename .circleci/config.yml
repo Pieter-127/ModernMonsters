@@ -5,11 +5,17 @@ orbs:
 
 jobs:
   build-and-test:
-    executor:
-      name: android/android-docker
-      tag: 2022.08.1
+    docker:
+      - image: circleci/android:api-30
+        environment:
+          JVM_OPTS: -Xmx3200m
     steps:
       - checkout
+      - run:
+          name: Set Java 17
+          command: |
+            sudo update-alternatives --set java /usr/lib/jvm/zulu17-ca-jdk17.28.13-linux_x64/bin/java
+            java -version
       - run:
           name: Set execute permission for gradlew
           command: chmod +x ./gradlew
