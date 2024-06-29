@@ -6,6 +6,7 @@ jobs:
      - image: circleci/android:api-28
    environment:
      JVM_OPTS: -Xmx3200m
+     JAVA_HOME: /usr/local/openjdk-17
    general:
        artifacts:
            - /home/ubuntu/unideal-android/app/build/outputs/apk/
