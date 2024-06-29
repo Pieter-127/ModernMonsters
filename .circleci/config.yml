@@ -1,26 +1,32 @@
 version: 2.1
+
+orbs:
+  android: circleci/android@2.1.2
+
 jobs:
-  build:
-    docker:
-      - image: circleci/android:api-30
-    working_directory: ~/project
+  build-and-test:
+    executor:
+      name: android/android-docker
+      tag: 2022.08.1
     steps:
       - checkout
+      - android/restore-gradle-cache
       - run:
-          name: Set execute permission for gradlew
-          command: chmod +x ./gradlew
+          name: Build project
+          command: ./gradlew assembleDebug
       - run:
-          name: Download dependencies
-          command: ./gradlew dependencies
-      - run:
-          name: Run tests
-          command: ./gradlew test
+          name: Run unit tests
+          command: ./gradlew testDebug
       - store_test_results:
           path: app/build/test-results
       - store_artifacts:
           path: app/build/reports
+
 workflows:
   version: 2
   build-and-test:
     jobs:
-      - build
+      - build-and-test:
+          filters:
+            branches:
+              only: develop
