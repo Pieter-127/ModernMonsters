@@ -14,3 +14,5 @@ These core modules can also use and rely on another core modules if needed, such
 I made use of Github Actions to put together a simple build script that should also upload Apk's for the lastest build, you can find those [here](https://github.com/Pieter-127/ModernMonsters/actions)</br>
 
 A demo of the app while running can be downloaded from [here](https://github.com/Pieter-127/ModernMonsters/blob/develop/demo.mp4)</br>
+
+No tests at the moment, I was mostly focused on learning a few new things with the architecture and the new compose navigation library
