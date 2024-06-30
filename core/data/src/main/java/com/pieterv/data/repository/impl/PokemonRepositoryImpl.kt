@@ -46,7 +46,7 @@ class PokemonRepositoryImpl @Inject constructor(
     override suspend fun getMatchups(): Resource<List<Matchup>> {
         return try {
             Resource.Success(
-                Matchup.entries.toList()
+                Matchup.entries.filter { it != Matchup.NEW }.toList()
             )
         } catch (e: Exception) {
             return Resource.Error(e)

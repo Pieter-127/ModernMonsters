@@ -15,6 +15,7 @@ interface PokemonRepository {
     suspend fun getPokemonInfo(pokemonName: String): Resource<PokemonDetail>
 
     suspend fun getMatchups(): Resource<List<Matchup>>
+
     suspend fun getMatchupInfo(matchup: Matchup): Resource<MatchupInfo>
 
 }

@@ -16,7 +16,6 @@ import com.pieterv.modernmonsters.navigation.AppDestinations
 import com.pieterv.modernmonsters.navigation.PokemonListNavigation
 import com.pieterv.modernmonsters.navigation.MatchupNavigation
 
-
 @Composable
 fun ModernMonstersUI() {
     var currentDestination by rememberSaveable { mutableStateOf(AppDestinations.HOME) }

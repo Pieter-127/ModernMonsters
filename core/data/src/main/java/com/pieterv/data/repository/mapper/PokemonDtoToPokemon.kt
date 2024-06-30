@@ -3,9 +3,9 @@ package com.pieterv.data.repository.mapper
 
 import com.pieterv.common.formatToDisplayCase
 import com.pieterv.models.PokemonDetail
+import com.pieterv.models.getMatchupFromString
 import com.pieterv.network.model.PokemonDto
 import com.pieterv.network.model.Sprites
-import java.util.Locale
 import kotlin.reflect.full.memberProperties
 import kotlin.reflect.jvm.isAccessible
 
@@ -17,7 +17,7 @@ fun PokemonDto.toPokemonDetail(): PokemonDetail {
                 .replace("-", " ")
         },
         types = this.types.map { typeInfo ->
-            typeInfo.type.name.formatToDisplayCase()
+            getMatchupFromString(typeInfo.type.name)
         },
         sprites = getAllSpriteResources(sprites)
     )

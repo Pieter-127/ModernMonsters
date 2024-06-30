@@ -20,7 +20,7 @@ import com.pieterv.components.MonstersLottieAnimation
 import com.pieterv.detail.R
 
 @Composable
-fun PokemonSpritesComposable(modifier: Modifier = Modifier, sprites: List<String>) {
+internal fun PokemonSpritesComposable(modifier: Modifier = Modifier, sprites: List<String>) {
     LazyRow(modifier = modifier, contentPadding = PaddingValues(8.dp)) {
         items(sprites) { spriteUrl ->
             Box(
