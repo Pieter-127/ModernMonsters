@@ -29,7 +29,7 @@ fun ModernMonstersUI() {
     )
 
     NavigationSuiteScaffold(
-        containerColor = MaterialTheme.colorScheme.primary,
+        containerColor = MaterialTheme.colorScheme.background,
         contentColor = MaterialTheme.colorScheme.onPrimary,
         navigationSuiteItems = {
             AppDestinations.entries.forEach {
