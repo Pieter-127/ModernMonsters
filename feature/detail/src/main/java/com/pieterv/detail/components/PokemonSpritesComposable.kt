@@ -16,6 +16,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.unit.dp
 import com.pieterv.components.ImageLoadingComposable
+import com.pieterv.components.MonstersLottieAnimation
 import com.pieterv.detail.R
 
 @Composable
@@ -35,7 +36,7 @@ fun PokemonSpritesComposable(modifier: Modifier = Modifier, sprites: List<String
                     imageUrl = spriteUrl,
                     contentDescription = spriteUrl,
                     loadingAnimation = {
-                        LottieAnimation(R.raw.anim, true)
+                        MonstersLottieAnimation(R.raw.anim, true)
                     })
             }
         }

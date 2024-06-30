@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 
@@ -23,7 +24,7 @@ class PokemonDetailScreenViewModel @Inject constructor(
     var state = _state.asStateFlow()
 
     fun loadPokemon(pokemonName: PokemonName) {
-        _state.update {currentState ->
+        _state.update { currentState ->
             currentState.copy(
                 failedLoading = false,
                 isLoading = true,
@@ -31,28 +32,30 @@ class PokemonDetailScreenViewModel @Inject constructor(
         }
         viewModelScope.launch(Dispatchers.IO) {
             val response = getPokemonDetailsUseCase(pokemonName)
-            if (response is Resource.Success) {
-                response.data.let { detail ->
-                    if (detail != null) {
-                        _state.update { currentState ->
-                            currentState.copy(
-                                failedLoading = false,
-                                isLoading = false,
-                                data = detail
-                            )
-                        }
-                    } else {
-                        _state.update { currentState ->
-                            currentState.copy(
-                                failedLoading = false,
-                                isLoading = false,
-                            )
+            withContext(Dispatchers.Main) {
+                if (response is Resource.Success) {
+                    response.data.let { detail ->
+                        if (detail != null) {
+                            _state.update { currentState ->
+                                currentState.copy(
+                                    failedLoading = false,
+                                    isLoading = false,
+                                    data = detail
+                                )
+                            }
+                        } else {
+                            _state.update { currentState ->
+                                currentState.copy(
+                                    failedLoading = false,
+                                    isLoading = false,
+                                )
+                            }
                         }
                     }
-                }
-            } else {
-                _state.update {
-                    it.copy(failedLoading = true, isLoading = false)
+                } else {
+                    _state.update {
+                        it.copy(failedLoading = true, isLoading = false)
+                    }
                 }
             }
         }

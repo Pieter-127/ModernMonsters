@@ -1,6 +1,7 @@
 package com.pieterv.data.repository.mapper
 
 
+import com.pieterv.common.formatToDisplayCase
 import com.pieterv.models.PokemonDetail
 import com.pieterv.network.model.PokemonDto
 import com.pieterv.network.model.Sprites
@@ -12,11 +13,11 @@ fun PokemonDto.toPokemonDetail(): PokemonDetail {
     return PokemonDetail(
         baseStats = this.stats.firstOrNull()?.base ?: 0,
         foundInGames = this.games.map { game ->
-            game.version.name.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() }
+            game.version.name.formatToDisplayCase()
                 .replace("-", " ")
         },
         types = this.types.map { typeInfo ->
-            typeInfo.type.name.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() }
+            typeInfo.type.name.formatToDisplayCase()
         },
         sprites = getAllSpriteResources(sprites)
     )

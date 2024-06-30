@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.pieterv.projectversion")
     id("com.pieterv.compose")
+    id("com.pieterv.lottie")
 }
 
 android {

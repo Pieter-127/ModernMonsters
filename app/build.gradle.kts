@@ -56,6 +56,8 @@ dependencies {
     implementation(project(":core:design"))
     implementation(project(":feature:list"))
     implementation(project(":feature:detail"))
+    implementation(project(":feature:matchup"))
+    implementation(project(":feature:typeInfo"))
     implementation(project(":core:domain"))
     implementation(project(":core:network"))
     implementation(project(":core:models"))

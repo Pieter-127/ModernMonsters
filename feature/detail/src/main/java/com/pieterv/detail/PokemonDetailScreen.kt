@@ -2,7 +2,6 @@ package com.pieterv.detail
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -21,8 +20,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import com.pieterv.components.MonstersLottieAnimation
 import com.pieterv.components.MonstersTopAppBar
-import com.pieterv.detail.components.LottieAnimation
 import com.pieterv.detail.components.PokemonGamesComposable
 import com.pieterv.detail.components.PokemonHeadingImage
 import com.pieterv.detail.components.PokemonSpritesComposable
@@ -84,11 +83,12 @@ internal fun PokemonDetailScreenContent(
                     )
                 } else {
                     ScreenLoadedComposable(
-                        paddingValues,
-                        pokemonImageUrl,
-                        pokemonName,
-                        modifier,
-                        state
+                        pokemonImageUrl = pokemonImageUrl,
+                        pokemonName = pokemonName,
+                        modifier = Modifier
+                            .padding(paddingValues)
+                            .fillMaxSize(),
+                        state = state
                     )
                 }
             })
@@ -102,7 +102,7 @@ private fun ScreenLoadingComposable(modifier: Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        LottieAnimation(
+        MonstersLottieAnimation(
             file = R.raw.anim,
             isPlaying = true
         )
@@ -130,16 +130,13 @@ private fun LoadingFailedComposable(
 
 @Composable
 private fun ScreenLoadedComposable(
-    paddingValues: PaddingValues,
     pokemonImageUrl: String,
     pokemonName: PokemonName,
     modifier: Modifier,
     state: PokemonDetailState
 ) {
     LazyColumn(
-        modifier = Modifier
-            .padding(paddingValues)
-            .fillMaxSize()
+        modifier = modifier,
     ) {
         item {
             PokemonHeadingImage(

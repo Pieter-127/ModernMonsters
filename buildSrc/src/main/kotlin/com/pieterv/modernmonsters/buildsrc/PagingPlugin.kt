@@ -9,5 +9,4 @@ class PagingPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         target.dependencies.implementation(target.libs.androidx.paging.runtime.ktx)
     }
-
 }

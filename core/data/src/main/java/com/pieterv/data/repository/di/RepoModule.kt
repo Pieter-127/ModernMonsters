@@ -1,6 +1,7 @@
 package com.pieterv.data.repository.di
 
 import com.pieterv.data.repository.PokemonRepository
+import com.pieterv.data.repository.impl.TypeInfoFactory
 import com.pieterv.data.repository.impl.PokemonRepositoryImpl
 import com.pieterv.data.repository.paging.PokemonPagingSource
 import com.pieterv.database.pokemon.PokemonListDao
@@ -28,8 +29,16 @@ class RepoModule {
     @Singleton
     fun providePokemonRepository(
         api: PokemonApi,
-        pokemonPagingSource: PokemonPagingSource
+        pokemonPagingSource: PokemonPagingSource,
+        typeInfoFactory: TypeInfoFactory,
     ): PokemonRepository {
-        return PokemonRepositoryImpl(api, pokemonPagingSource)
+        return PokemonRepositoryImpl(api, pokemonPagingSource, typeInfoFactory)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMatchupInfoFactory(
+    ): TypeInfoFactory {
+        return TypeInfoFactory()
     }
 }

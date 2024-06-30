@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="base_stats">Base stats: </string>
+    <string name="found_in_games">This pokemon can be found in the following games: </string>
+    <string name="generic_error">Something went wrong, please try again</string>
+    <string name="try_again">Try again</string>
+</resources>
